@@ -5,6 +5,7 @@
       "@/*": ["./*"],
       "@workspace/ui/*": ["../../packages/ui/src/*"]
     },
+    "allowImportingTsExtensions": true,
     "plugins": [
       {
         "name": "next"

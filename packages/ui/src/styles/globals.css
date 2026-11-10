@@ -119,6 +119,26 @@
     --sidebar-ring: oklch(0.56 0.021 213.5);
 }
 
+html[data-density="compact"] {
+    --spacing: 0.21rem;
+}
+
+html[data-density="comfortable"] {
+    --spacing: 0.25rem;
+}
+
+html[data-radius="sharp"] {
+    --radius: 0.25rem;
+}
+
+html[data-radius="default"] {
+    --radius: 0.625rem;
+}
+
+html[data-radius="rounded"] {
+    --radius: 1rem;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -129,4 +149,33 @@
   button:not(:disabled), [role="button"]:not(:disabled) {
     cursor: pointer;
     }
+  ::selection {
+    background: color-mix(in oklch, var(--primary) 25%, transparent);
+    }
+}
+
+@media print {
+  [data-slot="sidebar"],
+  [data-slot="sidebar-inset"] > header,
+  .print-hidden {
+    display: none !important;
+  }
+  [data-slot="sidebar-inset"] {
+    margin: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+  main {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+    zoom: 1 !important;
+  }
+  .payslip-print {
+    break-inside: avoid;
+    box-shadow: none !important;
+  }
 }
